@@ -1,6 +1,6 @@
 # Monies
 
-**TODO: Add description**
+My *famous* monies spreadsheet, in Elixir CLI form!
 
 ## Installation
 
@@ -20,5 +20,14 @@ and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/monies](https://hexdocs.pm/monies).
 
 
+Format, compile, build, and run:
+
+```
 e() { mix format && mix compile && mix escript.build && ./monies; }
+```
+
+Do all those same things, but also start with a backup for easier debugging:
+
+```
 e() { cp monies-backup.json monies.json && mix format && mix compile && mix escript.build && ./monies; }
+```
