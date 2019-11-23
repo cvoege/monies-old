@@ -20,4 +20,5 @@ and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/monies](https://hexdocs.pm/monies).
 
 
+e() { mix format && mix compile && mix escript.build && ./monies; }
 e() { cp monies-backup.json monies.json && mix format && mix compile && mix escript.build && ./monies; }

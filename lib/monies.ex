@@ -73,7 +73,7 @@ defmodule Monies do
   end
 
   def commands do
-    ["help", "rebalance", "contribute", "quit"]
+    ["help", "init", "update balances", "rebalance", "contribute", "quit"]
   end
 
   def apply_changes(state, account_index, changes) do
@@ -160,6 +160,14 @@ defmodule Monies do
 
   def execute_command(_, "init", []) do
     {:continue, init()}
+  end
+
+  def execute_command(_, "update balances", []) do
+    # TODO
+  end
+
+  def execute_command(_, "update target", []) do
+    # TODO
   end
 
   def init do
