@@ -100,4 +100,23 @@ defmodule Account do
     |> Enum.map(fn {k, v} -> {k, contribution * (v / total_positive)} end)
     |> Map.new()
   end
+
+  def read_accounts do
+    if CommandLine.confirm("Would you like to add an account to track?") == :yes do
+      account = read_account()
+      [account | read_accounts()]
+    else
+      []
+    end
+  end
+
+  def read_account do
+    CommandLine.write("What's the name of this account?")
+    name = CommandLine.read()
+    CommandLine.write("What's the tax nature of this account? (taxable/roth/traditional)")
+    tax_type = CommandLine.read()
+    holdings = Holding.read_holdings()
+    CommandLine.write("Account created!")
+    %Account{name: name, tax_type: tax_type, holdings: holdings}
+  end
 end

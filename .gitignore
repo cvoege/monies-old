@@ -25,3 +25,5 @@ monies-*.tar
 monies
 monies.json
 monies-backup.json
+
+backups/
