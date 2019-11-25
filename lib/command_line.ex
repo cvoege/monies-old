@@ -27,6 +27,15 @@ defmodule CommandLine do
     amount
   end
 
+  def choose_one(choices) do
+    choices
+    |> Enum.with_index()
+    |> Enum.map(fn {str, index} -> "#{index + 1}: #{str}\n" end)
+    |> CommandLine.write()
+
+    CommandLine.read_integer() - 1
+  end
+
   def write(str) do
     IO.puts(str)
   end

@@ -1,7 +1,8 @@
 defmodule Target do
   def read_target do
     target =
-      FundList.map(fn fund_details ->
+      FundList.list()
+      |> Enum.map(fn fund_details ->
         CommandLine.write("What is your target for #{fund_details.ticker}, #{fund_details.name}?")
         alloc = CommandLine.read_percentage()
         {fund_details.ticker, alloc / 100.0}

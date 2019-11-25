@@ -1,0 +1,95 @@
+{
+  "asset_classes": [
+    "us_large_cap",
+    "us_extended_market",
+    "us_real_estate",
+    "us_total_stock",
+    "international_total_stock",
+    "us_total_bond",
+    "international_total_bond",
+    "money_market"
+  ],
+  "funds": [
+    {
+      "ticker": "VTSAX",
+      "etf_ticker": "VTI",
+      "name": "Total US Stock Market",
+      "asset_type": "stock",
+      "location": "domestic",
+      "expense_ratio": 0.04,
+      "tax_efficiency": "medium", 
+      "asset_class": "us_total_stock"
+    },
+    {
+      "ticker": "VTIAX",
+      "etf_ticker": "VXUS",
+      "name": "Total International Stock Market",
+      "asset_type": "stock",
+      "location": "international",
+      "expense_ratio": 0.11,
+      "tax_efficiency": "medium",
+      "asset_class": "international_total_stock"
+    },
+    {
+      "ticker": "VBTLX",
+      "etf_ticker": "BND",
+      "name": "Total US Bond Market",
+      "asset_type": "bond",
+      "location": "domestic",
+      "expense_ratio": 0.05,
+      "tax_efficiency": "low",
+      "asset_class": "us_total_bond"
+    },
+    {
+      "ticker": "VTABX",
+      "etf_ticker": "BNDX",
+      "name": "Total International Bond Market",
+      "asset_type": "bond",
+      "location": "international",
+      "expense_ratio": 0.11,
+      "tax_efficiency": "low",
+      "asset_class": "international_total_bond"
+    },
+    {
+      "ticker": "VGSLX",
+      "etf_ticker": "VNQ",
+      "name": "US Real Estate Investment Trusts",
+      "asset_type": "real_estate",
+      "location": "domestic",
+      "expense_ratio": 0.12,
+      "tax_efficiency": "low",
+      "asset_class": "us_real_estate"
+    },
+    {
+      "ticker": "VMFXX",
+      "name": "Money Market",
+      "asset_type": "cash",
+      "location": "domestic",
+      "expense_ratio": 0.11,
+      "tax_efficiency": "high",
+      "asset_class": "cash"
+    }
+  ],
+  "inactive_funds": [
+    {
+      "ticker": "VEXAX",
+      "etf_ticker": "VXF",
+      "name": "US Extended Market",
+      "asset_type": "stock",
+      "location": "domestic",
+      "expense_ratio": 0.07,
+      "tax_efficiency": "medium",
+      "asset_class": "us_extended_market"
+    },
+    {
+      "ticker": "VFIAX",
+      "etf_ticker": "VOO",
+      "name": "S&P 500 Index Fund",
+      "asset_type": "stock",
+      "location": "domestic",
+      "expense_ratio": 0.04,
+      "tax_efficiency": "medium",
+      "asset_class": "us_large_cap"
+    }
+  ]
+}

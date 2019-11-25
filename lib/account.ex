@@ -58,7 +58,7 @@ defmodule Account do
     all_values |> Enum.map(fn {k, v} -> {k, v / all_total} end) |> Map.new()
   end
 
-  def divergence_helper(current_allocations, target_allocations) do
+  defp divergence_helper(current_allocations, target_allocations) do
     all_tickers =
       Enum.concat(Map.keys(current_allocations), Map.keys(target_allocations)) |> Enum.uniq()
 
@@ -118,5 +118,24 @@ defmodule Account do
     holdings = Holding.read_holdings()
     CommandLine.write("Account created!")
     %Account{name: name, tax_type: tax_type, holdings: holdings}
+  end
+
+  def deserialize(%{"name" => name, "tax_type" => tax_type, "holdings" => holdings_hashes}) do
+    %Account{
+      name: name,
+      tax_type: tax_type,
+      holdings:
+        holdings_hashes |> Enum.map(fn holding_hash -> Holding.deserialize(holding_hash) end)
+    }
+  end
+
+  def pretty_divergence(changes) do
+    FundList.list()
+    |> Enum.map(fn fund -> {fund, Map.get(changes, fund.ticker, 0)} end)
+    |> Enum.filter(fn {_, change} -> change != 0 end)
+    |> Enum.map(fn {fund, change} ->
+      buy_text = if change > 0, do: "Buy", else: 'Sell'
+      "#{buy_text} #{fund.ticker} (#{fund.name}): #{Float.floor(abs(change), 2)}\n"
+    end)
   end
 end

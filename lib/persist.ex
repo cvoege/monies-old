@@ -11,21 +11,9 @@ defmodule Persist do
     hash = Jason.decode!(str)
     target = Map.get(hash, "target", %{})
 
-    map_holding = fn %{"ticker" => ticker, "value" => value} ->
-      %Holding{ticker: ticker, value: value}
-    end
-
-    map_account = fn %{"name" => name, "tax_type" => tax_type, "holdings" => holdings_hashes} ->
-      %Account{
-        name: name,
-        tax_type: tax_type,
-        holdings: holdings_hashes |> Enum.map(map_holding)
-      }
-    end
-
     accounts =
       Map.get(hash, "accounts", [])
-      |> Enum.map(map_account)
+      |> Enum.map(fn account_hash -> Account.deserialize(account_hash) end)
 
     %{
       target: target,
